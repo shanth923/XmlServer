@@ -8,51 +8,106 @@
 
 import UIKit
 
-class ViewController: UIViewController,XMLParserDelegate {
+class ViewController: UIViewController,XMLParserDelegate,UITableViewDelegate,UITableViewDataSource {
+    
+    
 
     var xmlParserobj:XMLParser!
     var dataTask:URLSessionDataTask!
     
     var currentZone:String!
     
-    var allApps = [String]()
+    var tableVie:UITableView!
+    
+    var titles = [String]()
+    var category = [String]()
+    var dicrption = [String]()
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+            
+        
+        print(titles)
+        return titles.count
+            
+            
+           }
+           
+           func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+            let cell = UITableViewCell.init(style: UITableViewCell.CellStyle.default, reuseIdentifier: "abcd")
+    //
+               cell.backgroundColor = .systemBlue
+            
+               cell.textLabel?.text = titles[indexPath.row]
+    //
+            cell.textLabel?.textColor = .blue
+               print("@@@@@@@@@@@@@")
+               
+               return cell
+           }
+   
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         xml()
-        // Do any additional setup after loading the view.
+        
+        tableVie = UITableView(frame: view.frame, style: UITableView.Style.plain)
+        tableVie.register(UITableViewCell.self, forCellReuseIdentifier: "abcd")
+        
+       view.addSubview(tableVie)
+        
+        tableVie.delegate = self
+        tableVie.dataSource = self
+       
     }
     
     func parserDidStartDocument(_ parser: XMLParser){
     
-        print(parser)
+        
     }
 
     func parser(_ parser: XMLParser, foundCharacters string: String){
         
        
         
-        let trimmedElement = string.trimmingCharacters(in: CharacterSet.whitespaces)
+        let trimmedElement = string.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
         
-      
-        if(currentZone == "item"){
+        if(trimmedElement.count > 0){
+        
+        if(currentZone == "title"){
             
-            allApps += [trimmedElement]
-            
-            print(allApps)
-            
+            titles.append(trimmedElement)
+       
         }
+        else if(currentZone == "category"){
+                   
+                   category += [trimmedElement]
+              
+               }
+        else if(currentZone == "description"){
+                   
+                   dicrption += [trimmedElement]
+              
+               }
+        }
+             
+ print(titles)
+        
         
     }
     func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String] = [:]){
         
-        if(currentZone == "item"){
+        if(elementName == "title" || elementName == "category" || elementName == "description"){
             
             
             currentZone = elementName
-            
+
         }
+       
+
+        
         
     }
      
@@ -63,7 +118,19 @@ class ViewController: UIViewController,XMLParserDelegate {
     }
     func parserDidEndDocument(_ parser: XMLParser){
         
+        tableVie.reloadData()
+        
     }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
     
     func xml(){
         var urlRequest = URLRequest(url: URL(string: "https://rss.itunes.apple.com/api/v1/in/ios-apps/top-free/all/10/explicit.rss")!)
