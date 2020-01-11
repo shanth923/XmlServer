@@ -16,6 +16,7 @@
 		318B0A6123C97418001E276D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 318B0A5F23C97418001E276D /* LaunchScreen.storyboard */; };
 		318B0A6C23C97418001E276D /* XmlServerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318B0A6B23C97418001E276D /* XmlServerTests.swift */; };
 		318B0A7723C97418001E276D /* XmlServerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 318B0A7623C97418001E276D /* XmlServerUITests.swift */; };
+		318B0A8523C97439001E276D /* data.xml in Resources */ = {isa = PBXBuildFile; fileRef = 318B0A8423C97439001E276D /* data.xml */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +52,7 @@
 		318B0A7223C97418001E276D /* XmlServerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = XmlServerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		318B0A7623C97418001E276D /* XmlServerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XmlServerUITests.swift; sourceTree = "<group>"; };
 		318B0A7823C97418001E276D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		318B0A8423C97439001E276D /* data.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = data.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +106,7 @@
 				318B0A5123C97412001E276D /* AppDelegate.swift */,
 				318B0A5323C97412001E276D /* SceneDelegate.swift */,
 				318B0A5523C97412001E276D /* ViewController.swift */,
+				318B0A8423C97439001E276D /* data.xml */,
 				318B0A5723C97412001E276D /* Main.storyboard */,
 				318B0A5D23C97418001E276D /* Assets.xcassets */,
 				318B0A5F23C97418001E276D /* LaunchScreen.storyboard */,
@@ -236,6 +239,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				318B0A6123C97418001E276D /* LaunchScreen.storyboard in Resources */,
+				318B0A8523C97439001E276D /* data.xml in Resources */,
 				318B0A5E23C97418001E276D /* Assets.xcassets in Resources */,
 				318B0A5923C97412001E276D /* Main.storyboard in Resources */,
 			);
